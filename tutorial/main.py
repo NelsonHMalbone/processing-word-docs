@@ -24,14 +24,25 @@ para_text = para1.text  # the text from para1
 """
 
 # get the text from from 2
+"text object"
+# text = doc2.paragraphs[0].text # here we just extract the text no font nothing else
+"para object"
+para = doc2.paragraphs[0] # this method preserves the format of text and such
 
-text = doc2.paragraphs[0].text
 # doc2.paragraphs[0] paragraph object
 # .text is getting the text
 
 # method 1 to get paragraph from file 2
-new_paragraph = doc1.add_paragraph(text) # get a list of paragraphs
+'if using the para object we dont need this line'
+#new_paragraph = doc1.add_paragraph(text) # get a list of paragraphs
 
 # method 2 this method will place the new paragraph into the right location
-paragraphs = doc1.paragraphs
-paragraphs[1]._element.addnext(new_paragraph)
+paragraphs = doc1.paragraphs # the paragraphs of doc 1
+"only for the text object"
+# paragraphs[1]._element.addnext(new_paragraph._element) # access the 2nd paragraph and places the new section below it
+"only for the para object"
+paragraphs[1]._element.addnext(para._element)
+
+
+# access the modified file
+doc1.save("files/updated_panda.docx")
